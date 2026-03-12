@@ -1,7 +1,8 @@
 import { FastifyInstance, FastifyRequest, FastifyReply } from 'fastify';
+import fp from 'fastify-plugin';
 import { verifyAccessToken } from '../utils/jwt';
 
-export async function authPlugin(fastify: FastifyInstance) {
+export const authPlugin = fp(async function (fastify: FastifyInstance) {
   fastify.decorateRequest('user', undefined);
 
   fastify.decorate('authenticate', async function (request: FastifyRequest, reply: FastifyReply) {
@@ -18,7 +19,7 @@ export async function authPlugin(fastify: FastifyInstance) {
       return reply.status(401).send({ error: 'Invalid or expired token' });
     }
   });
-}
+});
 
 declare module 'fastify' {
   interface FastifyInstance {
