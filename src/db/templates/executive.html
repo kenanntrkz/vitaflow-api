@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #0f172a; --navy-mid: #1e293b; --gold: #c9a84c; --gold-light: #f5ead6;
+    --gold-muted: #d4b96a; --text-on-dark: #e2d9c8; --body-text: #334155;
+    --body-light: #64748b; --border: #e9e4d8; --bg: #fdfcf9;
+  }
+  html, body {
+    width: 595px; min-height: 842px; margin: 0 auto;
+    font-family: 'Montserrat', sans-serif; font-size: 8.5pt;
+    color: var(--body-text); background: var(--bg); line-height: 1.55;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .cv-wrapper { display: grid; grid-template-columns: 190px 1fr; min-height: 842px; }
+  .cv-sidebar {
+    background: var(--navy); padding: 36px 20px 28px;
+    display: flex; flex-direction: column;
+  }
+  .sidebar-name {
+    font-family: 'Cormorant Garamond', serif; font-size: 20pt; font-weight: 700;
+    color: #ffffff; line-height: 1.1; letter-spacing: 0.3px; margin-bottom: 6px;
+  }
+  .sidebar-divider { width: 36px; height: 2px; background: var(--gold); margin: 10px 0 14px; }
+  .sidebar-contact { display: flex; flex-direction: column; gap: 6px; margin-bottom: 28px; }
+  .sidebar-contact span {
+    font-size: 7.5pt; color: var(--text-on-dark); font-weight: 300;
+    letter-spacing: 0.3px; line-height: 1.4; word-break: break-word;
+  }
+  .sidebar-contact span::before {
+    content: ''; display: block; width: 12px; height: 1px; background: var(--gold); margin-bottom: 3px;
+  }
+  .cv-main { padding: 36px 28px 28px 26px; background: var(--bg); }
+  .section { margin-bottom: 20px; }
+  .section:last-child { margin-bottom: 0; }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif; font-size: 14pt; font-weight: 600;
+    color: var(--navy); letter-spacing: 0.3px; margin-bottom: 12px; padding-bottom: 6px;
+    border-bottom: none; display: flex; align-items: center; gap: 10px;
+  }
+  .section-title::before {
+    content: ''; display: inline-block; width: 3px; height: 16px; background: var(--gold); flex-shrink: 0;
+  }
+  .section-title::after { content: ''; flex: 1; height: 0.75px; background: var(--border); margin-left: 4px; }
+  .entry { margin-bottom: 14px; }
+  .entry:last-child { margin-bottom: 0; }
+  .entry-title {
+    font-family: 'Cormorant Garamond', serif; font-size: 11pt; font-weight: 600;
+    color: var(--navy); letter-spacing: 0.2px;
+  }
+  .entry-meta {
+    font-size: 7pt; color: var(--gold-muted); font-weight: 500;
+    margin-top: 2px; margin-bottom: 5px; letter-spacing: 0.3px; text-transform: uppercase;
+  }
+  .entry-desc { font-size: 8.5pt; color: var(--body-light); line-height: 1.6; font-weight: 300; }
+  .summary-text {
+    font-family: 'Cormorant Garamond', serif; font-size: 11pt; font-style: italic;
+    color: var(--body-light); line-height: 1.65; font-weight: 300;
+  }
+  .skills-list { display: flex; flex-wrap: wrap; gap: 5px 6px; }
+  .skill-tag {
+    font-size: 7pt; color: var(--navy-mid); border: 0.75px solid var(--gold-muted);
+    padding: 3px 9px; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase;
+    background: var(--gold-light);
+  }
+  .lang-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 5px 0; border-bottom: 0.75px solid rgba(201,168,76,0.2);
+  }
+  .lang-row:last-child { border-bottom: none; }
+  .lang-name {
+    font-family: 'Cormorant Garamond', serif; font-size: 10pt; font-weight: 600; color: var(--navy);
+  }
+  .lang-level { font-size: 7pt; color: var(--gold); font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; }
+  .cert-row { padding: 5px 0; border-bottom: 0.75px solid var(--border); }
+  .cert-row:last-child { border-bottom: none; }
+  .cert-row .entry-title { font-size: 9.5pt; display: block; }
+  .cert-row .entry-meta { display: block; margin-top: 1px; text-transform: none; color: var(--body-light); font-size: 7.5pt; }
+  @media print {
+    html, body { width: 595px; }
+    .cv-sidebar { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+  <div class="cv-wrapper">
+    <div class="cv-sidebar">
+      <div class="sidebar-name">{{fullName}}</div>
+      <div class="sidebar-divider"></div>
+      <div class="sidebar-contact">
+        <span>{{email}}</span>
+        <span>{{phone}}</span>
+        <span>{{location}}</span>
+      </div>
+    </div>
+    <div class="cv-main">{{content}}</div>
+  </div>
+</body>
+</html>

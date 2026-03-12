@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --ink: #2c2c2c; --ink-light: #5a5a5a; --ink-muted: #8a8a8a;
+    --gold: #c8a96e; --border-light: #d4c5b0; --cream: #faf8f5;
+  }
+  html, body {
+    width: 595px; min-height: 842px; margin: 0 auto;
+    font-family: 'Source Serif 4', serif; font-size: 9.5pt;
+    color: var(--ink); background: var(--cream); line-height: 1.6;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .cv-header {
+    text-align: center; padding: 36px 40px 24px; position: relative; background: var(--cream);
+  }
+  .header-rule-top { width: 100%; border: none; border-top: 2.5px solid var(--ink); margin-bottom: 3px; }
+  .header-rule-thin { width: 100%; border: none; border-top: 0.75px solid var(--ink); margin-bottom: 20px; }
+  .header-name {
+    font-family: 'Playfair Display', serif; font-size: 26pt; font-weight: 700;
+    color: var(--ink); letter-spacing: 2px; line-height: 1.1; margin-bottom: 4px;
+  }
+  .header-contact { display: flex; justify-content: center; flex-wrap: wrap; gap: 0; margin-top: 8px; }
+  .header-contact span { font-size: 8pt; color: var(--ink-light); font-weight: 300; letter-spacing: 0.5px; }
+  .header-contact span + span::before { content: '  \00b7  '; color: var(--gold); font-size: 9pt; }
+  .header-rule-bottom-thin { width: 100%; border: none; border-top: 0.75px solid var(--ink); margin-top: 18px; margin-bottom: 3px; }
+  .header-rule-bottom { width: 100%; border: none; border-top: 2.5px solid var(--ink); }
+  .cv-body { padding: 20px 40px 28px; }
+  .section { margin-bottom: 20px; }
+  .section:last-child { margin-bottom: 0; }
+  .section-title {
+    font-family: 'Playfair Display', serif; font-size: 12.5pt; font-weight: 600;
+    color: var(--ink); letter-spacing: 0.5px; margin-bottom: 10px; padding-bottom: 6px;
+    border-bottom: 0.75px solid var(--ink); display: flex; align-items: center; gap: 10px; font-style: italic;
+  }
+  .section-title::after { content: ''; flex: 1; height: 1px; background: var(--gold); margin-left: 4px; }
+  .entry { margin-bottom: 13px; }
+  .entry:last-child { margin-bottom: 0; }
+  .entry-title {
+    font-family: 'Playfair Display', serif; font-size: 10.5pt; font-weight: 600; color: var(--ink);
+  }
+  .entry-meta {
+    font-size: 8pt; color: var(--ink-muted); font-style: italic; margin-bottom: 4px;
+    font-family: 'Source Serif 4', serif; font-weight: 300; letter-spacing: 0.2px;
+  }
+  .entry-desc { font-size: 9pt; color: var(--ink-light); line-height: 1.55; font-weight: 300; }
+  .summary-text {
+    font-size: 9.5pt; color: var(--ink-light); line-height: 1.65;
+    font-style: italic; font-weight: 300; padding: 2px 0 2px 16px; border-left: 2px solid var(--gold);
+  }
+  .skills-list { display: flex; flex-wrap: wrap; gap: 6px 8px; }
+  .skill-tag {
+    font-size: 8pt; color: var(--ink-light); border: 0.75px solid var(--border-light);
+    padding: 3px 10px; font-weight: 300; letter-spacing: 0.3px; background: #ffffff;
+  }
+  .lang-row {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 5px 0; border-bottom: 0.75px dotted var(--border-light);
+  }
+  .lang-row:last-child { border-bottom: none; }
+  .lang-name { font-family: 'Playfair Display', serif; font-size: 9pt; font-weight: 600; color: var(--ink); }
+  .lang-level { font-size: 8pt; color: var(--ink-muted); font-style: italic; font-weight: 300; }
+  .cert-row {
+    display: flex; align-items: baseline; gap: 6px; padding: 4px 0;
+    border-bottom: 0.75px dotted var(--border-light);
+  }
+  .cert-row:last-child { border-bottom: none; }
+  .cert-row .entry-title { font-size: 9pt; }
+  .cert-row .entry-meta { font-size: 8pt; margin-bottom: 0; }
+  @media print { html, body { width: 595px; background: var(--cream); } }
+</style>
+</head>
+<body>
+  <div class="cv-header">
+    <hr class="header-rule-top">
+    <hr class="header-rule-thin">
+    <div class="header-name">{{fullName}}</div>
+    <div class="header-contact">
+      <span>{{email}}</span>
+      <span>{{phone}}</span>
+      <span>{{location}}</span>
+    </div>
+    <hr class="header-rule-bottom-thin">
+    <hr class="header-rule-bottom">
+  </div>
+  <div class="cv-body">{{content}}</div>
+</body>
+</html>
