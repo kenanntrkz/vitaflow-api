@@ -1,0 +1,16 @@
+services:
+  vitaflow-api:
+    build: .
+    container_name: vitaflow-api
+    restart: unless-stopped
+    ports:
+      - "3500:3500"
+    env_file:
+      - .env
+    networks:
+      - emlak-network
+
+networks:
+  emlak-network:
+    external: true
+    name: emlakasistan_default
