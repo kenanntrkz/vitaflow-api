@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { pool } from './index';
+import pool from './index';
 
 const TEMPLATES_DIR = path.join(__dirname, 'templates');
 
